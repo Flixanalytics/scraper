@@ -1,0 +1,39 @@
+body{
+	background-color: #f0f0f0;
+	color: #333;
+}
+h1{
+	color: #E50914;
+	text-align: left;
+}
+
+h2{
+	color: #FB8122;
+}
+.stExpander {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.stExpander > div:first-child {
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.stExpander > div:last-child {
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
+/* Responsive iframe */
+iframe {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    iframe {
+        height: 300px;
+    }
+}
