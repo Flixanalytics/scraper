@@ -3,7 +3,8 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import os
-
+# Set page configuration
+st.set_page_config(page_title='scraper', page_icon='🛠', layout='wide')
 # Custom CSS to make the layout more responsive
 def local_css(file_name):
     with open(file_name, "r") as f:
