@@ -6,12 +6,13 @@ import os
 import subprocess
 
 # Set page configuration
-st.set_page_config(page_title='YouTube Scraper', page_icon='🛠', layout='wide')
+st.set_page_config(page_title='scraper', page_icon='🛠', layout='wide')
 
 # Custom CSS to make the layout more responsive
 def local_css(file_name):
     with open(file_name, "r") as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
 local_css("style.css")
 
 # Function to get video data
@@ -44,6 +45,10 @@ def update_dataset(video_id, csv_file='video_data.csv'):
             new_data = {'Video ID': video_id, 'Title': title, 'Thumbnail URL': thumbnail_url}
             updated_data = pd.concat([existing_data, pd.DataFrame([new_data])], ignore_index=True)
             updated_data.to_csv(csv_file, index=False)
+            
+            # Set Git user details
+            subprocess.run(['git', 'config', '--global', 'user.email', 'flixanalytics@yahoo.com'], check=True)
+            subprocess.run(['git', 'config', '--global', 'user.name', 'Flixanalytics'], check=True)
             
             # Save the updated file to the repository
             subprocess.run(['git', 'add', csv_file], check=True)
