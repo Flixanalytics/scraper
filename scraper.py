@@ -43,7 +43,7 @@ def update_dataset(video_id, csv_file='video_data.csv'):
             # Save the updated file to the repository
             os.system(f'git add {csv_file} && git commit -m "Update with new video ID: {video_id}" && git push')
             
-            st.success(f"Video '{title}' added successfully!")
+            st.success(f"Video {title} added successfully!")
         except Exception as e:
             st.warning(f"Failed to retrieve data for {video_id}: {e}")
     else:
