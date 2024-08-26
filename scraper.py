@@ -6,13 +6,12 @@ import os
 import subprocess
 
 # Set page configuration
-st.set_page_config(page_title='YouTube Video Data Scraper', page_icon='🛠', layout='wide')
+st.set_page_config(page_title='YouTube Scraper', page_icon='🛠', layout='wide')
 
 # Custom CSS to make the layout more responsive
 def local_css(file_name):
     with open(file_name, "r") as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
 local_css("style.css")
 
 # Function to get video data
@@ -47,11 +46,11 @@ def update_dataset(video_id, csv_file='video_data.csv'):
             updated_data.to_csv(csv_file, index=False)
             
             # Save the updated file to the repository
-            subprocess.run(['git', 'add', csv_file])
-            subprocess.run(['git', 'commit', '-m', f"Update with new video ID: {video_id}"])
-            subprocess.run(['git', 'push'])
+            subprocess.run(['git', 'add', csv_file], check=True)
+            subprocess.run(['git', 'commit', '-m', f'Update with new video ID: {video_id}'], check=True)
+            subprocess.run(['git', 'push'], check=True)
             
-            st.success(f"Video '{title}' added successfully!")
+            st.success(f"Video {title} added successfully!")
         except Exception as e:
             st.warning(f"Failed to retrieve data for {video_id}: {e}")
     else:
